@@ -26,9 +26,9 @@
 		/**
 		 * Init the Map
 		 * 
-		 * @param {boo} editMode 	True when user is in edit mode 
+		 * @param {obj} scope 	Controler's Scope 
 		 */
-		function initMap(editMode) {
+		function initMap(scope) {
 			var me = this;
 			var osm_map_url = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 			var latitude = 46.519962;
@@ -52,7 +52,7 @@
 			 * @param {obj} event 
 			 */
 			function onMapClick(event) {
-				if (editMode) {
+				if (scope.editMode) {
 					me.newRoute.push(event.latlng);
 					var markerColor = (me.newRoute.length == 1) ? 'green' : 'red';
 
