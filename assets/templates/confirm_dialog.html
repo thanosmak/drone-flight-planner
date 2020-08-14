@@ -1,0 +1,20 @@
+<md-dialog aria-label="" disable-parent-scroll>
+	<form name="newRouteForm">
+		<md-dialog-content class="md-dialog-content">
+			<h2 class="md-title">{{ dialog_title }}</h2>
+			<div class="md-dialog-content-body"><p>{{ dialog_message }}</p></div>
+			<md-input-container style="width: 100%;">
+				<label>Route Name</label>
+				<input name="newRoute" ng-model="new_route_name" required />
+				<div ng-messages="newRouteForm.newRoute.$error" ng-show="newRouteForm.newRoute.$dirty">
+					<div ng-message="required">This is required!</div>
+				</div>
+			</md-input-container>
+		</md-dialog-content>
+
+		<md-dialog-actions layout="row">
+			<md-button type="submit" ng-if="cancel_button" ng-click="cancel()">{{ cancel_button }}</md-button>
+			<md-button type="submit" ng-if="confirm_button" ng-click="confirm()">{{ confirm_button }}</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

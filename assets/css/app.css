@@ -1,0 +1,53 @@
+body {
+	margin: 0;
+}
+html,
+body {
+	height: 100%;
+}
+
+/* Leaflet */
+#leaflet {
+	width: 100%;
+	height: 100%;
+}
+.leaflet-pane,
+.leaflet-top,
+.leaflet-bottom {
+	z-index: 20;
+}
+
+/* Custom CSS */
+.logo {
+    width: 38px; 
+    height: 38px;
+}
+
+md-list.routes-list {
+    height: calc(100vh - 165px); 
+    overflow-y: scroll;
+}
+md-list .md-button{
+	padding-right: 0;
+}
+
+/* Scrollbar */
+/* Width */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
