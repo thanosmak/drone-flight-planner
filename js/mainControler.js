@@ -5,7 +5,7 @@
 
 	function mainControler($scope, $mdSidenav, $mdDialog, $mdToast, MapFactory, DisplayFactory) {
 		var route = [];
-		var map = MapFactory.initMap($scope.editMode);
+		var map = MapFactory.initMap($scope);
 		var selected_route = null;
 
 		$scope.list = getRouteFromStorage();
