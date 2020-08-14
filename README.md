@@ -1,4 +1,4 @@
-# drone-flight--planner
+# drone-flight-planner
 A drone flight planner JS App with AngularJS + Leaflet
 
 # Libraries and Technologies used
