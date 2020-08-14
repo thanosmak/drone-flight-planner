@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html ng-app="pixApp">
+	<head>
+		<!-- Angular Material Style -->
+		<link rel="stylesheet" href="assets/libraries/angular-material/angular-material.min.css" />
+		<link rel="stylesheet" href="assets/libraries/angular-material/angular-material-icons.css"/>
+		<!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /> -->
+
+		<!-- Libraries -->
+		<script src="assets/libraries/angularjs/angular.min.js"></script>
+		<script src="assets/libraries/angularjs/angular-animate.min.js"></script>
+		<script src="assets/libraries/angularjs/angular-aria.min.js"></script>
+		<script src="assets/libraries/angularjs/angular-messages.min.js"></script>
+		<script src="assets/libraries/angular-material/angular-material.min.js"></script>
+
+		<!-- Leaflet -->
+		<script src="assets/libraries/leaflet/leaflet.js"></script>
+		<link rel="stylesheet" href="assets/libraries/leaflet/leaflet.css" />
+
+		<!-- Controllers -->
+		<script src="app.js"></script>
+		<script src="js/mainControler.js"></script>
+		<script src="js/mapFactory.js"></script>
+		<script src="js/displayFactory.js"></script>
+
+		<!-- Styles -->
+		<link rel="stylesheet" href="assets/css/app.css" />
+	</head>
+
+	<body>
+		<div ng-controller="mainControler">
+			<section layout="row">
+				<md-content flex>
+					<!-- Top Toolbar -->
+					<md-toolbar>
+						<div class="md-toolbar-tools">
+							<md-icon md-svg-icon="{{pix_logo}}" class="logo" aria-label="Logo"></md-icon>
+							<h2 flex class="md-toolbar-tools">
+								<span>Drone Flight Planner</span>
+							</h2>
+							<md-button ng-click="cancelEditMode()" ng-show="editMode" aria-label="Cancel">
+								Cancel
+							</md-button>
+
+							<md-button ng-click="saveRoute($event)" ng-show="editMode" aria-label="Save Route">
+								Save Route
+							</md-button>
+
+							<md-button 
+								class="md-raised md-accent md-hue-3" 
+								ng-click="addNewRoute()" 
+								ng-show="!editMode" 
+								aria-label="Add New Route"
+								style="background-color: #da4f3e;">
+								Add New Route
+							</md-button>
+						</div>
+					</md-toolbar>
+
+					<div layout="row" layout-align="space-around stretch" layout-padding>
+						<!-- Routes List Container -->
+						<div flex="25">
+							<md-toolbar layout="row" class="md-hue-3">
+								<div class="md-toolbar-tools">
+									<span>Saved Routes</span>
+								</div>
+							</md-toolbar>
+
+							<md-list class="routes-list" flex>
+								<md-subheader class="md-no-sticky">{{ list.length }} saved routes</md-subheader>
+								<md-list-item
+									class="md-3-line secondary-button-padding"
+									ng-repeat="item in list track by $index"
+									ng-click="selectRoute(item)">
+									<div class="md-list-item-text" layout="row">
+										<div layout="column" flex>
+											<h3>{{ item.name }}</h3>
+											<h4>Number of points: {{ item.route.length }}</h4>
+										</div>
+										<div flex="10" class="md-secondary" ng-click="deleteSavedRoute($event, $index)" aria-label="Delete Route">
+											<md-icon md-font-library="material-icons">delete</md-icon>
+										</div>
+									</div>
+								</md-list-item>
+							</md-list>
+						</div>
+						<!-- Map Container -->
+						<div flex="75">
+							<div id="leaflet"></div>
+						</div>
+					</div>
+				</md-content>
+			</section>
+		</div>
+	</body>
+</html>
